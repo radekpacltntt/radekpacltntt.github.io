@@ -1,0 +1,35 @@
+﻿<html>
+<head>
+    <title>FAKE CRM</title>
+    <script language="javascript" type="text/javascript">
+        function mypage_onload() {
+            appendText("--- URL parameters ------------------------------------------------");
+            appendText("\r\n");
+
+            window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                appendText("Key: " + key + ", Value: " + value);
+                appendText("\r\n");
+            });
+        }
+
+        function setText(txt) {
+            myTextBox.value = txt;
+        }
+
+        function appendText(txt) {
+            myTextBox.value = myTextBox.value + txt;
+        }
+
+    </script>
+</head>
+<body onload="mypage_onload();">
+    <h1>FAKE CRM</h1>
+    <table>
+        <tr>
+            <td>
+                <textarea id="myTextBox" rows="40" cols="80"></textarea>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
