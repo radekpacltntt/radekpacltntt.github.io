@@ -18,11 +18,66 @@
             info.value = info.value + txt;
         }
 
-        function updateKvp(){
-            appendText("--- Update kvp ---");
-            appendText("\r\n");
-
+        // EoWebViewOneCrm.RegisterJSExtensionFunction("acceptInteraction", WebViewAcceptInteraction);
+        function accept(){
             try {
+                appendText("--- Accept ---");
+                appendText("\r\n");
+
+                acceptInteraction();
+
+                appendText("--- DONE ---");
+                appendText("\r\n");
+            } catch (e) {
+                appendText("--- ERROR ---");
+                appendText("\r\n");
+                appendText(e);
+                appendText("\r\n");
+            }
+        }
+        // EoWebViewOneCrm.RegisterJSExtensionFunction("finishInteractionAsSpam", WebViewFinishInteractionAsSpam);
+        function finish(){
+            try {
+                appendText("--- Finish as SPAM ---");
+                appendText("\r\n");
+
+                finishInteractionAsSpam();
+
+                appendText("--- DONE ---");
+                appendText("\r\n");
+            } catch (e) {
+                appendText("--- ERROR ---");
+                appendText("\r\n");
+                appendText(e);
+                appendText("\r\n");
+            }
+        }
+        // EoWebViewOneCrm.RegisterJSExtensionFunction("rejectInteraction", WebViewRejectInteraction);
+        function reject(){
+            try {
+                appendText("--- Reject ---");
+                appendText("\r\n");
+
+                appendText("Demand type: " + demandType.value);
+                appendText("\r\n");
+
+                rejectInteraction(demandType.value);
+
+                appendText("--- DONE ---");
+                appendText("\r\n");
+            } catch (e) {
+                appendText("--- ERROR ---");
+                appendText("\r\n");
+                appendText(e);
+                appendText("\r\n");
+            }
+        }
+        // EoWebViewOneCrm.RegisterJSExtensionFunction("updateAttachedData", WebViewUpdateAttachedData);
+        function updateKvp(){
+            try {
+                appendText("--- Update kvp ---");
+                appendText("\r\n");
+
                 appendText("Key: " + kvpkey.value + ", Value: " + kvpvalue.value);
                 appendText("\r\n");
 
@@ -30,13 +85,35 @@
 
                 appendText("--- DONE ---");
                 appendText("\r\n");
-              } catch (e) {
+            } catch (e) {
                 appendText("--- ERROR ---");
                 appendText("\r\n");
                 appendText(e);
                 appendText("\r\n");
-              }
+            }
         }
+        // EoWebViewOneCrm.RegisterJSExtensionFunction("rescheduleInteraction", WebViewRescheduleInteraction);
+        function reschedule(){
+            try {
+                appendText("--- Reschedule ---");
+                appendText("\r\n");
+
+                appendText("Target call time: " + rescheduleCallTime.value);
+                appendText("\r\n");
+
+                rescheduleInteraction(rescheduleCallTime.value);
+
+                appendText("--- DONE ---");
+                appendText("\r\n");
+            } catch (e) {
+                appendText("--- ERROR ---");
+                appendText("\r\n");
+                appendText(e);
+                appendText("\r\n");
+            }
+        }
+
+        
     </script>
 </head>
 <body onload="mypage_onload();">
@@ -49,13 +126,13 @@
         </tr>
     </table>
 
+
+
     <table>
         <tr>
-            <td colspan="3">
-                <h1>Update interaction's data</h1>
+            <td>
+                <strong>Update data</strong>
             </td>
-        </tr>
-        <tr>
             <td>
                 Key: <input id="kvpkey" placeholder="KEY"/>
             </td>
@@ -64,6 +141,44 @@
             </td>
             <td>
                 <button onclick="updateKvp();">Update KVP</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Accept</strong>
+            </td>
+            <td>
+                <button onclick="accept();">Accept</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Finish as SPAM</strong>
+            </td>
+            <td>
+                <button onclick="finish();">Finish as SPAM</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Reject</strong>
+            </td>
+            <td>
+                Demand: <input id="demandType" placeholder="prepaid / nonzd"/>
+            </td>
+            <td>
+                <button onclick="reject();">Reject</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Reschedule</strong>
+            </td>
+            <td>
+                Target: <input id="rescheduleCallTime" placeholder="2019-09-18T18:47:45Z"/>
+            </td>
+            <td>
+                <button onclick="reschedule();">Reschedule</button>
             </td>
         </tr>
     </table>
