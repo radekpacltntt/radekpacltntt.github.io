@@ -12,14 +12,29 @@
             });
         }
 
-        function setText(txt) {
-            myTextBox.value = txt;
-        }
-
         function appendText(txt) {
-            myTextBox.value = myTextBox.value + txt;
+            info.value = info.value + txt;
         }
 
+        function updateKvp(){
+            appendText("--- Update kvp ---");
+            appendText("\r\n");
+
+            try {
+                appendText("Key: " + kvpkey.value + ", Value: " + kvpvalue.value);
+                appendText("\r\n");
+
+                updateAttachedData(kvpkey.value,kvpvalue.value);
+
+                appendText("--- DONE ---");
+                appendText("\r\n");
+              } catch (e) {
+                appendText("--- ERROR ---");
+                appendText("\r\n");
+                appendText(e);
+                appendText("\r\n");
+              }
+        }
     </script>
 </head>
 <body onload="mypage_onload();">
@@ -27,7 +42,26 @@
     <table>
         <tr>
             <td>
-                <textarea id="myTextBox" rows="40" cols="80"></textarea>
+                <textarea id="info" rows="20" cols="80"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td colspan="3">
+                <h1>Update interaction's data</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Key: <input id="kvpkey" placeholder="KEY"/>
+            </td>
+            <td>
+                Value: <input id="kvpvalue" placeholder="VALUE"/>
+            </td>
+            <td>
+                <button onclick="updateKvp();">Update KVP</button>
             </td>
         </tr>
     </table>
