@@ -1,0 +1,365 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 768px) {
+  .show-on-device-mobile { display: none; }
+}
+
+.o2soc.o2soc--login {
+  background: #000066;
+  background: linear-gradient(to bottom, rgb(0, 0, 51) 0px, rgb(13, 56, 109) 33vh, rgb(22, 125, 184) 66vh, rgb(123, 188, 226) 100vh);
+  background-position: center top;
+  background-size: cover;
+  background-image: url("../images/loginBg.png");
+  
+}
+
+.o2soc.o2soc--login .o2login-heading {
+  width: 93px;
+  height: 24px;
+  margin: 0 auto;
+  padding-top: 1rem;
+  background: url("../images/header/logo-header-moje-o2.png") no-repeat center bottom;
+}
+
+@media screen and (min-width: 768px) {
+  .o2soc.o2soc--login .o2login-heading {
+    padding-top: 3rem;
+  }
+}
+.o2soc.o2soc--login .o2login-heading h1 {
+  display: none;
+}
+
+.o2soc.o2soc--login .o2login-pane {
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 992px) {
+  .o2soc.o2soc--login .o2login-pane {
+    border-radius: 4px;
+    padding: 32px;
+  }
+}
+.o2soc.o2soc--login .o2login-footer {
+  background-color: #fff;
+}
+
+body.o2soc--login2 {
+  background-color: #ffffff;
+}
+body.o2soc--login2 .columns-1 {
+  flex: 1 1 auto;
+}
+body.o2soc--login2 .o2-page {
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 0;
+  flex-wrap: wrap;
+}
+body.o2soc--login2 .o2-footer {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 0;
+}
+body.o2soc--login2 .o2-footer__width {
+  max-width: none;
+}
+body.o2soc--login2 .o2login2-heading {
+  margin: 24px 0 24px 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-heading {
+    line-height: 38px;
+    margin: 32px 0 32px 0;
+    font-size: 28px;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-heading {
+    line-height: 44px;
+    margin: 48px 0 48px 0;
+    font-size: 32px;
+  }
+}
+body.o2soc--login2 .o2login2-heading2 {
+  margin: 16px 0;
+  line-height: 22px;
+  font-size: 16px;
+}
+body.o2soc--login2 .o2login2-extrainfo {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+body.o2soc--login2 .o2login2-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-tabs {
+    margin-bottom: 32px;
+  }
+}
+body.o2soc--login2 .o2login2-tabs__item {
+  display: flex;
+  flex: 0 0 49%;
+  align-items: center;
+  justify-content: center;
+  width: 49%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: rgba(19, 31, 54, 0.9);
+}
+body.o2soc--login2 .o2login2-tabs__item:hover {
+  color: #000066;
+  background-color: rgba(0, 25, 165, 0.1);
+  text-decoration: none;
+  cursor: pointer;
+}
+body.o2soc--login2 .o2login2-tabs__item:active {
+  background-color: rgba(0, 0, 102, 0.1);
+}
+body.o2soc--login2 .o2login2-tabs__item:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 102, 0.25);
+  outline: none;
+}
+body.o2soc--login2 .o2login2-tabs__text {
+  display: block;
+}
+body.o2soc--login2 .o2login2-tabs__item--active,
+body.o2soc--login2 .o2login2-tabs__item--active:hover {
+  background-color: rgba(0, 25, 165, 0.05);
+  color: #0019A5;
+}
+body.o2soc--login2 .o2login2-form {
+  margin: 0 0 24px 0;
+}
+body.o2soc--login2 .o2login2-form__row {
+  margin: 16px 0;
+}
+body.o2soc--login2 .o2login2-form__input {
+  width: 100%;
+  box-shadow: none;
+}
+body.o2soc--login2 .o2login2-form__btn {
+  width: 100%;
+  background-color: #0019A5;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+  font-weight: 600;
+}
+body.o2soc--login2 .o2login2-form__btn:hover {
+  color: #ffffff;
+  background-color: #00004C;
+  box-shadow: 0px 4px 8px -1px rgba(0, 0, 102, 0.5);
+}
+body.o2soc--login2 .o2login2-form__btn:focus {
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 255, 0.4);
+}
+body.o2soc--login2 .o2login2-form__btn:active {
+  background-color: #000042;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 102, 0.5);
+}
+body.o2soc--login2 .o2login2-form__btn[disabled] {
+  background-color: #000000;
+  opacity: 0.15;
+}
+body.o2soc--login2 .o2login2-links {
+  margin: 24px 0 32px 0;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-links {
+    margin: 24px 0 48px 0;
+  }
+}
+body.o2soc--login2 .o2login2-links__item {
+  margin: 20px 0;
+}
+body.o2soc--login2 .o2login2-links__item a {
+  color: #0019A5;
+}
+body.o2soc--login2 .o2login2-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("appka-sm.jpg?1") no-repeat center 30px;
+  background-size: auto 290px;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-banner {
+    background-image: url("appka-md.jpg?1");
+    background-size: auto 500px;
+    background-position: -170px -40px;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner {
+    background-size: auto 500px;
+    background-position: center 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body.o2soc--login2 .o2login2-banner {
+    background-image: url("appka-lg.jpg?1");
+    background-size: auto 600px;
+    background-position: center 10px;
+  }
+}
+body.o2soc--login2 .o2login2-banner__heading {
+  flex: 0 0 100%;
+  width: 100%;
+  line-height: 30px;
+  margin: 32px 22px 240px 22px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-banner__heading {
+    line-height: 36px;
+    margin: 32px 0 60px 0;
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner__heading {
+    line-height: 36px;
+    margin: 56px 0 360px 0;
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body.o2soc--login2 .o2login2-banner__heading {
+    margin: 56px 0 480px 0;
+  }
+}
+body.o2soc--login2 .o2login2-banner__heading-bold {
+  display: block;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-banner__heading-bold {
+    display: inline;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner__heading-bold {
+    display: block;
+  }
+}
+body.o2soc--login2 .o2login2-banner__info {
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-banner__info {
+    margin: 0 0 20px 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner__info {
+    margin: 0 0 32px 0;
+  }
+}
+body.o2soc--login2 .o2login2-banner__info-item {
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner__info-item {
+    margin: 18px 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+body.o2soc--login2 .o2login2-banner-icon {
+  font-size: 24px;
+  color: #41B3E3;
+  margin-right: 24px;
+  line-height: 1em;
+  vertical-align: -25%;
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner-icon {
+    font-size: 32px;
+  }
+}
+body.o2soc--login2 .o2login2-banner__stores {
+  margin: 0 0 32px 0;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-banner__stores {
+    margin: 0 0 84px 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-banner__stores {
+    margin: 0 0 100px 0;
+  }
+}
+body.o2soc--login2 .o2login2-banner__stores-link {
+  display: inline-block;
+  text-decoration: none;
+}
+body.o2soc--login2 .o2login2-cols {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+body.o2soc--login2 .o2login2-cols__form {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+@media screen and (min-width: 768px) {
+  body.o2soc--login2 .o2login2-cols__form {
+    margin-top: 24px;
+  }
+}
+body.o2soc--login2 .o2login2-cols__banner {
+  background: #000FA6;
+  color: #ffffff;
+}
+body.o2soc--login2 .o2login2-cols__form-narrow {
+  text-align: center;
+  max-width: 320px;
+  flex: 0 1 320px;
+}
+body.o2soc--login2 .flex-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0;
+}
+body.o2soc--login2 .flex-item {
+  flex: 1;
+}
+body.o2soc--login2 .qr-heading {
+  padding: 0 16px;
+  white-space: nowrap;
+}
+body.o2soc--login2 hr.qr-hr {
+  margin-top: 8px;
+}
+@media screen and (min-width: 992px) {
+  body.o2soc--login2 .o2login2-cols {
+    margin-bottom: 76px;
+    display: flex;
+    align-items: stretch;
+  }
+  body.o2soc--login2 .o2login2-cols__form,
+body.o2soc--login2 .o2login2-cols__banner {
+    width: 50%;
+    flex: 0 0 50%;
+  }
+}

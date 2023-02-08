@@ -1,0 +1,203 @@
+/*! O2SOC Theme Build: 2.15.1 */
+(function($) {
+
+	O2page.extend({
+
+		key: {
+			shown: false,
+			$elm: $(),
+
+			show: function() {
+
+				var $info = this.$info,
+					enterHandler = this.enterHandler,
+					me = this;
+
+				if (!$info) {
+					$info = this.$info = $('<div class="js-key-info" style="background-color:#ffc;color:#000;font-family:monospace;line-height:1.25;font-size:13px;padding:9px;border:solid 1px #cc9;margin:0"/>');
+					$(document.body).append($info);
+				}
+				$info.hide();
+
+				if (!enterHandler) {
+					enterHandler = this.enterHandler = function() {
+						me.showInfo(this);
+					};
+				}
+
+				this.updateKeyTargets();
+
+				$(document).on('mouseenter', '.js-key-target', enterHandler);
+				$(document.body).addClass('js-key-shown');
+				this.shown = true;
+			},
+
+			hide: function() {
+
+				$(document).off('mouseenter', '.js-key-target', this.enterHandler);
+				$(document.body).removeClass('js-key-shown');
+				this.$info.hide();
+				this.$elm.css('textShadow', this.$elm.data('text-shadow-orig'));
+				this.shown = false;
+			},
+
+			showInfo: function(elm) {
+
+				var $elm = $(elm),
+					content = $elm.data('key-content'),
+					$info = this.$info,
+					t = (content.length && content.length > 1 ? 'Langtext keys:' : 'Langtext key:');
+
+				$info
+					.html('<div style="font-size:1.125em;font-weight:bold;margin:0 0 5px;font-family:sans-serif">' + t + '</div><div><div>' + content.join('</div><div>') + '</div></div>')
+					.css({
+						position: 'fixed',
+						right: 10,
+						bottom: 10
+					})
+					.show();
+
+				if (!this.$elm.is($elm)) { // Označí element s langtextem stínem.
+					this.$elm.css('textShadow', this.$elm.data('text-shadow-orig'));
+					$elm.data('text-shadow-orig', $elm.css('textShadow'));
+					$elm.css('textShadow', '0px 0px 5px #fff, 0px 0px 1px #ff0');
+					this.$elm = $elm;
+				}
+			},
+
+			updateKeyTargets: function() {
+
+				var $targets = $('*[data-key]').closest('div,p,span,form,fieldset,label,ul,ol,li,td,th,summary,blockquote,table');
+				$targets.each(function() {
+					var $this = $(this),
+						content = $this.filter('*[data-key]').add($this.find('*[data-key]')).map(function() {
+							return $(this).data('key');
+						}).get();
+
+					$this
+						.addClass('js-key-target')
+						.data('key-content', content);
+				});
+			}
+		}
+	});
+
+})(jQuery);
+(function($) {
+
+	O2page.extend({
+
+		/**
+		 * Switching between "internals shown" and "internals hidden" mode.
+		 */
+		internal: {
+			hide: function($trigger, informBE) {
+				if (typeof informBE === 'undefined')
+					informBE = true;
+
+				var $c = $('.js-internal-container'),
+					$s = $c.find('select');
+
+				$c.addClass('js-internal-hidden');
+
+				$s.each(function() { // ONEPT-842
+					var $this = $(this),
+						$internalOptions = $this.find('option.js-internal');
+					if ($internalOptions.length) {
+						$this.find('option').each(function(i) { $(this).data('internal-index', i); });
+						$this.data('internal-options', $internalOptions);
+						$internalOptions.remove();
+						$this.trigger('modified.o2util');
+					}
+				});
+
+				if (informBE) {
+					$.ajax({
+						method: 'get',
+						url: $trigger.data('internal-url'),
+						data: {hideInternal: "1"}
+					});
+				}
+
+				$('.js-internal').trigger('hidden.o2util');
+			},
+			show: function($trigger, informBE) {
+				if (typeof informBE === 'undefined')
+					informBE = true;
+
+				var $c = $('.js-internal-container'),
+					$s = $c.find('select');
+
+				$c.removeClass('js-internal-hidden');
+
+				$s.each(function() { // ONEPT-842
+					var $this = $(this),
+						$internalOptions = $this.data('internal-options');
+					if ($internalOptions && $internalOptions.length) {
+						$this.append($internalOptions);
+						$this.trigger('modified.o2util');
+					}
+				});
+
+				if (informBE) {
+					$.ajax({
+						method: 'get',
+						url: $trigger.data('internal-url'),
+						data: {hideInternal: "0"}
+					});
+				}
+
+				$('.js-internal').trigger('shown.o2util');
+			},
+			toggle: function(trigger) {
+				var $trigger = $(trigger);
+				if ($trigger.data('internal-hidden')) {
+					this.show($trigger);
+					$trigger.data('internal-hidden', false);
+				} else {
+					this.hide($trigger);
+					$trigger.data('internal-hidden', true);
+				}
+			},
+			resolve: function(trigger) {
+				var $trigger = $(trigger);
+				if($trigger.data('internal-hide')) {
+					this.hide($trigger, false);
+					$trigger.data('internal-hidden', true);
+				}
+			}
+		},
+	});
+
+})(jQuery);
+(function($) {
+
+	// Přepínač interního zobrazení
+	$(document).on('click', '.js-internal-switch', function(evt) {
+		evt.preventDefault();
+		O2page.internal.toggle(this);
+	});
+
+	$(document.body).on('keydown', function(evt) {
+		// Klíče u langtextů
+		if ((evt.keyCode == 75 || evt.keyCode == 107) && evt.altKey) { /* alt + K */
+			var key = O2page.key;
+			if (key.shown) {
+				key.hide();
+			} else {
+				key.show();
+			}
+		}
+
+		// Schová/zobrazí interní položky.
+		if (evt.keyCode == 73 && evt.altKey) { /* alt + I */
+			O2page.internal.toggle($('.js-internal-switch'));
+		}
+	});
+
+	$(document).ready(function(){
+		O2page.internal.resolve($('.js-internal-switch'));
+	});
+
+
+})(jQuery);
