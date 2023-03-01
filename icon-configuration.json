@@ -1,0 +1,17 @@
+{
+  "widgetIcon": {
+    "style": {
+      "top": "auto",
+      "left": "auto",
+      "bottom": 0,
+      "right": "10px",
+      "zIndex": 10000,
+      "width": "150px",
+      "height": "50px"
+    },
+    "logo": {
+      "src": "/src/assets/widget-icon-text.png"
+    },
+    "name": "Why do we need unique name?"
+  }
+}
